@@ -1,0 +1,53 @@
+$wavebackground: slategray
+
+$progress-bar-color: rgba(180,0,0,.5)
+$progress-background-color: rgba(100,0,0,.5)
+progress.amplitude-song-played-progress
+	/* reset */
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
+	border: none
+	/* style */
+	width: 100%
+	height: 85px
+	border: none
+	background-color: $progress-background-color
+	color: $progress-bar-color  //IE
+	&::-webkit-progress-bar
+		background-color: $progress-background-color
+	&::-webkit-progress-value
+		background-color: $progress-bar-color
+	&::-moz-progress-bar // bar
+		background-color: $progress-bar-color
+
+$buffer-bar-color: rgba(0,0,255,1)
+$buffer-background-color: rgba(0,0,100,1)
+progress.amplitude-buffered-progress
+	/* reset */
+	-webkit-appearance: none
+	-moz-appearance: none
+	appearance: none
+	border: none
+	/* style */
+	width: 100%
+	height: 15px
+	border: none
+	background-color: $buffer-background-color
+	color: $buffer-bar-color  //IE
+	&::-webkit-progress-bar
+		background-color: $buffer-background-color
+	&::-webkit-progress-value
+		background-color: $buffer-bar-color
+	&::-moz-progress-bar // bar
+		background-color: $buffer-bar-color
+
+.intro .heroSong
+	background-color: $wavebackground
+	.coastLine
+		display: flex
+		justify-content: flex-end
+		align-items: flex-end
+		> *
+			text-align: left
+			padding: 20px 0 20px 20px

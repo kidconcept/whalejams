@@ -1,0 +1,73 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<div class="ocean intro">
+
+	<div class="heroSong">	
+		<div class='waveform' data-url="{{file}}">
+			<div class="playwaveform">
+				<span class="amplitude-play-pause" amplitude-song-index="0">playpause</span>
+			</div>
+			<div class="waveWrapper">
+				<progress id="song-played-progress" max="100" class="amplitude-song-played-progress" amplitude-song-index="0"></progress>
+				<progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0" amplitude-song-index="0"></progress>
+			</div>
+		</div>
+
+		<div class="coastLine">
+			<div>
+				<div class="common-name">{{commonName}}</div>
+				<div class="genus-species">{{genusSpecies}}</div>
+			</div>
+			<div>
+				<label>Uploaded by</label>
+				<div>user</div>
+			</div>
+			<a href="/search">{{date}}</a>
+		</div>
+	</div>
+	
+	<div class="coastLine">
+		<div class="bannerText">
+			<h1>CETEACEAN COMMUNICATION DATABASE</h1>
+			<h2>A public database for humpback whale song and other recordings of Cetacean communication.</h2>
+			<a class="button" href="/upload">Upload</a>
+		</div>
+
+
+		<ul class="quicksummary cols">
+			<li>
+				<h2>About the Project</h2>
+				<p>The Cetacean Communication Database is a citizen science inititive to learn more about whalesong and other forms of cetacean communicatio.n Enthusiasts from all over the world can contribute recordings to the database for researchers to use.</p>
+			</li>
+			<li>
+				<h2>How to Contribute</h2>
+				<p>If you are in, or visiting, an area with singing whales you can make your own recordings and upload them to our database. Guidelines on equipment, process, and places where you can hear whale song are coming soon.</p>
+			</li>
+			<li>
+				<h2>About Whalesong</h2>
+				<p>Whalesong is beautiful and complex. We know that male whales sing only during their summer months and that the songs have structure similar to human songs but here is much we still have to learn about why and how whales sing.</p>
+			</li>
+		</ul>	
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	Amplitude.init({
+		"songs": [
+			{"url": "{{file}}"},
+		],
+		
+	});
+
+	document.getElementById('song-played-progress').addEventListener('click', function( e ){
+	    var offset = this.getBoundingClientRect();
+	    var x = e.pageX - offset.left;
+
+	    Amplitude.setSongPlayedPercentage( ( parseFloat( x ) / parseFloat( this.offsetWidth) ) * 100 );
+	});
+
+</script>
+
+{% endblock %}

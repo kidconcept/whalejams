@@ -1,0 +1,52 @@
+$rowHeight: 69px
+$buttonWidth: 100px
+
+#fileUpload
+	> div
+		height: $rowHeight
+	div.buttonWrapper button
+		width: $buttonWidth
+	input
+		width: 100%
+
+._react_fileupload_progress_content
+	height: $rowHeight
+	margin-top: -#{$rowHeight}
+	margin-left: $buttonWidth + 20px
+
+.selectSpecies
+	display: flex
+	justify-content: space-between
+	label
+		flex-grow: 1
+		display: block
+		height: $rowHeight
+
+.dateCommEquip
+	display: flex
+	justify-content: space-between
+	label
+		display: block
+		height: $rowHeight
+		input
+			display: block
+	label.recordingDate,
+	label.communicationType
+		width: 25%
+		em
+			display: block
+	label.equipmentUsed
+		width: 50%
+		input
+			width: 100%
+
+label.description
+	width: 100%
+	textarea
+		display: block
+		width: 100%
+
+.simpleMap
+	min-height: $rowHeight
+	input
+		display: block

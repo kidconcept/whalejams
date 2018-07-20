@@ -1,0 +1,203 @@
+html, body {
+  margin: 0;
+  paddding: 0; }
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+html {
+  font-family: sans-serif; }
+
+.button {
+  text-decoration: none;
+  background: dodgerblue;
+  color: white;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem; }
+  .button:hover {
+    background-color: skyblue; }
+
+.coastLine {
+  max-width: 1000px;
+  margin: 0 auto; }
+
+.cols {
+  display: flex;
+  justify-content: space-between; }
+  .cols > * {
+    margin-left: 1rem;
+    width: 100%; }
+    .cols > *:first-child {
+      margin-left: 0; }
+
+progress.amplitude-song-played-progress {
+  /* reset */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  /* style */
+  width: 100%;
+  height: 85px;
+  border: none;
+  background-color: rgba(100, 0, 0, 0.5);
+  color: rgba(180, 0, 0, 0.5); }
+  progress.amplitude-song-played-progress::-webkit-progress-bar {
+    background-color: rgba(100, 0, 0, 0.5); }
+  progress.amplitude-song-played-progress::-webkit-progress-value {
+    background-color: rgba(180, 0, 0, 0.5); }
+  progress.amplitude-song-played-progress::-moz-progress-bar {
+    background-color: rgba(180, 0, 0, 0.5); }
+
+progress.amplitude-buffered-progress {
+  /* reset */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  /* style */
+  width: 100%;
+  height: 15px;
+  border: none;
+  background-color: #000064;
+  color: blue; }
+  progress.amplitude-buffered-progress::-webkit-progress-bar {
+    background-color: #000064; }
+  progress.amplitude-buffered-progress::-webkit-progress-value {
+    background-color: blue; }
+  progress.amplitude-buffered-progress::-moz-progress-bar {
+    background-color: blue; }
+
+.intro .heroSong {
+  background-color: slategray; }
+  .intro .heroSong .coastLine {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end; }
+    .intro .heroSong .coastLine > * {
+      text-align: left;
+      padding: 20px 0 20px 20px; }
+
+.epipelagic {
+  background-color: grey;
+  color: white; }
+  .epipelagic nav {
+    display: flex;
+    justify-content: center; }
+    .epipelagic nav a {
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 1rem 0.7rem;
+      font-weight: bold;
+      display: inline-block;
+      color: white; }
+    .epipelagic nav a:hover {
+      background-color: black; }
+
+.usermenu {
+  position: absolute;
+  right: 0;
+  top: 0; }
+
+.mapContainer {
+  width: 100%;
+  height: 0;
+  overflow: hidden; }
+  .mapContainer .fixedMapContainer {
+    height: 500px; }
+  .mapContainer .mapSpacer {
+    margin-bottom: -500px; }
+
+.open.mapContainer {
+  height: 500px; }
+  .open.mapContainer .mapSpacer {
+    margin-bottom: 0; }
+
+.mapToggle {
+  cursor: pointer; }
+
+#fileUpload > div {
+  height: 69px; }
+#fileUpload div.buttonWrapper button {
+  width: 100px; }
+#fileUpload input {
+  width: 100%; }
+
+._react_fileupload_progress_content {
+  height: 69px;
+  margin-top: -69px;
+  margin-left: 120px; }
+
+.selectSpecies {
+  display: flex;
+  justify-content: space-between; }
+  .selectSpecies label {
+    flex-grow: 1;
+    display: block;
+    height: 69px; }
+
+.dateCommEquip {
+  display: flex;
+  justify-content: space-between; }
+  .dateCommEquip label {
+    display: block;
+    height: 69px; }
+    .dateCommEquip label input {
+      display: block; }
+  .dateCommEquip label.recordingDate,
+  .dateCommEquip label.communicationType {
+    width: 25%; }
+    .dateCommEquip label.recordingDate em,
+    .dateCommEquip label.communicationType em {
+      display: block; }
+  .dateCommEquip label.equipmentUsed {
+    width: 50%; }
+    .dateCommEquip label.equipmentUsed input {
+      width: 100%; }
+
+label.description {
+  width: 100%; }
+  label.description textarea {
+    display: block;
+    width: 100%; }
+
+.simpleMap {
+  min-height: 69px; }
+  .simpleMap input {
+    display: block; }
+
+.bannerText {
+  text-align: center;
+  margin-bottom: 2rem; }
+
+.title .commonName {
+  font-size: 1.8rem;
+  margin-right: 0.5rem; }
+.title .species {
+  font-size: 1.4rem;
+  font-weight: normal;
+  font-style: italic; }
+
+.metaGrid {
+  display: flex;
+  padding-bottom: 2rem;
+  border-bottom: 4px solid black; }
+  .metaGrid .left {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap; }
+    .metaGrid .left > * {
+      width: 25%; }
+  .metaGrid .right {
+    width: 40%; }
+  .metaGrid label {
+    display: block;
+    font-size: 0.8rem; }
+
+.songList li {
+  margin-bottom: 4rem; }
+
+/*# sourceMappingURL=app.css.map */

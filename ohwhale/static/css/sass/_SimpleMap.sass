@@ -1,0 +1,21 @@
+$mapHeight: 500px
+
+#inputFile
+
+
+.mapContainer
+	width: 100%
+	height: 0
+	overflow: hidden
+	.fixedMapContainer
+		height: $mapHeight
+	.mapSpacer
+		margin-bottom: -#{$mapHeight}
+
+.open.mapContainer
+	height: $mapHeight
+	.mapSpacer
+		margin-bottom: 0
+
+.mapToggle
+	cursor: pointer
