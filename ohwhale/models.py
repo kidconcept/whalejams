@@ -1,7 +1,11 @@
 from django.db import models
+from django.urls import reverse
 import uuid
 from datetime import timedelta
 from datetime import date
+from django.contrib import admin
+
+
 
 # Create your models here.
 class Recording(models.Model):
@@ -33,7 +37,10 @@ class Recording(models.Model):
 		else:
 			pop = self.population.population
 
-		return f'{self.species.commonName}, {pop}, {self.date}, {str(self.id)}'
+		return f'{self.species.commonName}, {pop}, {self.uploaded_on}, {str(self.id)}'
+
+	def get_absolute_url(self):
+		return reverse('song-detail', args=[str(self.id)])
 
 
 class Species(models.Model):
@@ -56,6 +63,6 @@ class Population(models.Model):
 	def __str__(self):
 		return self.population
 
-class Document(models.Model):
-	uploaded_at = models.DateTimeField(auto_now_add=True)
-	upload = models.FileField()
+#class Recording(admin.ModelAdmin):
+#	change_form_template = 'progressbarupload/change_form.html'
+#	add_form_template = 'progressbarupload/change_form.html'

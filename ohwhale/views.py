@@ -1,9 +1,13 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
+from django.views import generic
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from .models import Recording, Species, Population, Document
+from .models import Recording, Species, Population
+from .forms import NewRecordForm
+
 
 # Create your views here.
 def index(request):
@@ -22,13 +26,29 @@ def index(request):
 		context={'file':hero.file.url,'commonName':hero.species.commonName,'genusSpecies':hero.species.genusName+" "+hero.species.speciesName,'date':hero.date}
 	)
 
-class DocumentCreateView(CreateView):
-	model = Document
-	fields = ['upload', ]
-	success_url = reverse_lazy('home')
+class RecordingDetailView(generic.DetailView):
+	model = Recording
 
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		documents = Document.objects.all()
-		context['documents'] = documents
-		return context
+# These views are all attempts to render the upload form
+
+def upload_recording(request):
+	if request.method == 'POST':
+		form = NewRecordForm(request.POST)
+		if form.is_valid():
+			return HttpResponseRedirect('/new-record/')
+	else:
+		form = NewRecordForm()
+	return render(request, 'upload_recording.html', {'form': form})
+
+class RecordingCreate(CreateView):
+	model = Recording
+	fields = ['file', 'species', 'population', 'lat', 'lon', 'date', 'equipment', 'description', 'commType']	
+	initial={'equipment':'H1A Hydrophone'}
+
+class RecordingUpdate(UpdateView):
+	model = Recording
+	fields = ['file', 'species', 'population', 'lat', 'lon', 'date', 'equipment', 'description', 'commType']
+
+class RecordingDelete(DeleteView):
+	model = Recording
+	#success_url = reverse_lazy('recordings')

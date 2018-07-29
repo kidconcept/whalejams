@@ -1,0 +1,71 @@
+{% extends "base_generic.html" %}
+{% load progress_bar %}
+
+{% block content %}
+
+
+<form action="" method="post" enctype="multipart/form-data">
+	{% csrf_token %}
+
+	{{ form.non_field_errors }}
+	
+	<div>
+		<label for="{{ form.file.id_for_label }}">File</label>
+		{{ form.file.errors }}
+		{{ form.file }}
+		
+		{% progress_bar %}
+	</div>
+
+	<div>
+		<label for="{{ form.species.id_for_label }}">Species</label>
+		{{ form.species.errors }}
+		{{ form.species }}
+	</div>
+
+	<div>
+		<label for="{{ form.population.id_for_label }}">Population</label>
+		{{ form.population.errors }}
+		{{ form.population }}
+	</div>
+
+	<div>
+		<label for="{{ form.lat.id_for_label }}">lat</label>
+		{{ form.lat.errors }}
+		{{ form.lat }}
+	</div>
+
+	<div>
+		<label for="{{ form.lon.id_for_label }}">lon</label>
+		{{ form.lon.errors }}
+		{{ form.lon }}
+	</div>
+
+	<div>
+		<label for="{{ form.lon.id_for_label }}">Date</label>
+		{{ form.date.errors }}
+		{{ form.date }}
+	</div>
+
+	<div>
+		<label for="{{ form.lon.id_for_label }}">equipment</label>
+		{{ form.equipment.errors }}
+		{{ form.equipment }}
+	</div>
+
+	<div>
+		<label for="{{ form.lon.id_for_label }}">description</label>
+		{{ form.description.errors }}
+		{{ form.description }}
+	</div>
+
+	<div>
+		<label for="{{ form.lon.id_for_label }}">commType</label>
+		{{ form.commType.errors }}
+		{{ form.commType }}
+	</div>
+
+	<input type="submit" value="Submit" />
+	
+</form>
+{% endblock %}
