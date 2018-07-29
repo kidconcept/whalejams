@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django-storages',
+    'storages',
     'boto3',
     'progressbarupload',
     'ohwhale.apps.OhwhaleConfig',
