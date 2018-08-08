@@ -5,8 +5,6 @@ from datetime import timedelta
 from datetime import date
 from django.contrib import admin
 
-
-
 # Create your models here.
 class Recording(models.Model):
 	"""

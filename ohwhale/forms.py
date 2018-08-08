@@ -1,4 +1,4 @@
 from django import forms
 
-class NewRecordForm(forms.Form):
-	species_name = forms.CharField(label="species_name")
+class SongFilter(forms.Form):
+	your_name = forms.CharField(label='Your name', max_length=100)
