@@ -1,4 +1,11 @@
 from django import forms
+from .models import Recording
 
-class SongFilter(forms.Form):
-	your_name = forms.CharField(label='Your name', max_length=100)
+
+from s3direct.widgets import S3DirectWidget
+class NewRecordForm(forms.ModelForm):
+	file = forms.URLField(widget=S3DirectWidget(dest='whalejams'))
+
+	class Meta:
+		model = Recording
+		fields = ('file', 'lat', 'lon')

@@ -1,63 +1,32 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.views import generic
 from django.views.generic.edit import CreateView
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
-from .models import Recording, Species, Population
-from .forms import SongFilter
+from .models import Recording, Species, Population, RecordingFilter
+from .forms import NewRecordForm
 
-#class RecordingListView(generic.ListView):
-	#generic view of recordings for searchin
-#	model = Recording
-#	paginate_by = 10
+from django.views.generic import FormView
 
-#	def get_context_data(self, **kwargs):
-#		context = super().get_context_data(**kwargs)
+# CLEAN THESE IMPORTS YA SLOBP
 
-def SongList(request):
-# Renders a Form with filters and a list of recordings
-	if request.method == 'GET':
-		# create a form instance and populate it with data from the request:
-		songFilter = SongFilter(request.GET)
-		# check whether it's valid:
-		if songFilter.is_valid():
-			# process the data in songFilter.cleaned_data as required
-			# ...
-			# redirect to a new URL:
-			return reverse('songs')
-
-	# if a GET (or any other method) we'll create a blank songFilter
-	else:
-		songFilter = SongFilter()
-
-	# get recordings and filter
-	filtered_songs = Recording.objects.filter(species__commonName="Humpback Whale")
-
-	# sort recordings
-	sorted_songs = filtered_songs.order_by('date')
-
-	# pagination
-
-	return render(
-		request, 
-		'song_filter.html', 
-		{'form': songFilter, 'songs': sorted_songs}
-		)
-	
+#Da details Page
 class RecordingDetailView(generic.DetailView):
-	#generic view of Recording model
 	model = Recording
 
-class RecordingCreate(CreateView):
-	#generic create recording model form
-	model = Recording
-	fields = ['file', 'species', 'population', 'lat', 'lon', 'date', 'equipment', 'description', 'commType']	
-	initial={'equipment':'H1A Hydrophone'}
+#Da Upload Page
+#class RecordingCreate(CreateView):
+#	model = Recording
+#	form_class = S3DirectUploadForm
+	#fields = ['file', 'species', 'population', 'lat', 'lon', 'date', 'equipment', 'description', 'commType']	
+	#initial={'equipment':'H1A Hydrophone'}
 
+#Da Home page
 def index(request):
-	#Da Home page
 	#Function to Grab a random recording
 	#Doing this the easy way, which is slower than querying total length of the table and random number the length
 	def get_random_record(obj):
@@ -70,4 +39,37 @@ def index(request):
 		'index.html',
 		#Send the recording parts off to the index
 		context={'file':hero.file.url,'commonName':hero.species.commonName,'genusSpecies':hero.species.genusName+" "+hero.species.speciesName,'date':hero.date}
+	)
+
+#Da Search Page
+def song_list(request):
+	f = RecordingFilter(request.GET, queryset=Recording.objects.all())
+
+	paginator = Paginator(f.qs, 5)
+	page = request.GET.get('page')
+	results = paginator.get_page(page)
+
+	return render(
+		request, 
+		'recording_filter.html', 
+		context={'results':results,'filter':f}
+	)
+
+#New Upload Page Beta
+def upload(request):
+
+
+	if request.method == 'POST':
+		nRF = NewRecordForm(request.POST)
+		if nRF.is_valid():
+			new_record = nRF.save()
+			return redirect('song-detail',pk=new_record.id)
+
+	else:
+		nRF = NewRecordForm()
+
+	return render(
+		request,
+		'newRecordForm.html',
+		context={'newRecordForm':nRF}
 	)

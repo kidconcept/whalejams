@@ -6,10 +6,16 @@ from . import views
 urlpatterns = [
 	path('', views.index, name='index'),
 	path('song/<uuid:pk>', views.RecordingDetailView.as_view(), name='song-detail'),
-	path('songs/', views.SongList, name='songs'),
-	path('song/upload/', views.RecordingCreate.as_view(), name='song-upload'),
+	path('song/upload/', views.upload, name='song-upload'),
 ]
 
+# S3 Direct Test
 urlpatterns += [
-	re_path(r'^progressbarupload/', include('progressbarupload.urls'))
+    re_path(r'^s3direct/', include('s3direct.urls')),
+]
+
+# djang-filters
+urlpatterns += [
+	re_path(r'^list$', views.song_list),
+	path('songs/', views.song_list, name='songfilter'),
 ]

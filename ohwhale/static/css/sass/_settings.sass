@@ -1,12 +1,47 @@
+//Colors
+$bg-gradient-top: #07173B
+$bg-gradient-bottom: #000012
+$bg-inset: #01010F
+
+$text-off: #999999
+$text: #FFF
+
+$action-bg: #2C6277
+$action-text: #529EAF
+$action-bg-hover: #337E96
+$action-text-hover: #55B0BF
+$secondary-action: #5959d3 
+$secondary-action-hover: #7272dd
+$secondary-action-visited: #3434a5
+
+
+$audio-buffer-bar: #2b2b2b
+$audio-buffer: #595959
+
+$progress-bar-header: $secondary-action
+
+//Fonts
+$primary: open_sanslight
+$secondary: open_sansbold
+
+
+//Elements
 html
-	font-family: sans-serif
+	font-family: $primary, sans-serif
+	background: linear-gradient($bg-gradient-top, $bg-gradient-bottom, 1080px, $bg-gradient-bottom)
+	background-image: -ms-linear-gradient(top, $bg-gradient-top 0%, $bg-gradient-bottom 1080px, $bg-gradient-bottom 100%)
+	color: $text
+	min-height: 100%
 
 .button
 	text-decoration: none
-	background: dodgerblue
-	color: white
+	font-family: $secondary
+	background-color: $action-bg
+	color: $action-text
 	text-transform: uppercase
 	padding: 0.6rem 1rem
 	border-radius: 0.5rem
+	cursor: pointer
 	&:hover
-		background-color: skyblue
+		background-color: $action-bg-hover
+		color: $action-text-hover

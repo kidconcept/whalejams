@@ -1,6 +1,4 @@
 .epipelagic
-	background-color: grey
-	color: white
 	nav
 		display: flex
 		justify-content: center
@@ -10,9 +8,10 @@
 			padding: 1rem .7rem
 			font-weight: bold
 			display: inline-block
-			color: white
-		a:hover
-			background-color: black
+			color: $text-off
+		a:hover span
+			color: $text
+			border-bottom: 1px solid $text
 
 .usermenu
 	position: absolute

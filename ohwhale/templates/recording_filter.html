@@ -1,0 +1,134 @@
+<!-- /songs page built with the django-filter plugin -->
+
+{% extends "base_generic.html" %}
+
+	{% block content %}
+		<form action="" method="get" class="search-filter">
+			<div class="form-elements">
+				<div class="form-filter species">
+					<label for="species__speciesName">{{ filter.form.species__speciesName.label }}</label>
+					<div class="select-style">{{ filter.form.species__speciesName }}</div>				
+				</div>
+				<div class="form-filter population">
+					<!-- <label for="population__population">{{ filter.form.population__population.label }}</label>
+					<div class="select-style">{{ filter.form.population__population }}</div>	-->			
+				</div>
+				<div class="form-filter daterange">
+					<div class="labels">					
+						<label for="date_min">
+							<span class="text">From Date</span>
+							<span class="example">DD/MM/YYYY</span>
+						</label>
+						<label for="date_max">
+							<span class="text">To Date</span>
+							<span class="example">DD/MM/YYYY</span>
+						</label>
+					</div>
+					<div class="inputs">{{ filter.form.date }}</div>
+				</div>
+				<input type="submit" value="Search" />
+			</div>
+			<div class="errors">
+				{{ filter.form.errors }}
+			</div>
+		</form>
+
+		<div class="total-results">
+			{{ filter.qs.count }} Results, showing {{ results.start_index }} of {{ results.end_index }}
+		</div>
+
+		{% for obj in results %}
+		<div class="record">
+
+			<div class="wavelinks">
+				<a href="{{ obj.get_absolute_url }}">Full Record</a>
+				<a href="{{ obj.file.url }}">Download</a>
+			</div>
+
+			<div class="wavemeta">
+				<span class="whale-species">
+					{{ obj.species.commonName }} <span class="scientific-name">{{ obj.species.genusName }} {{ obj.species.speciesName }}</span>
+				</span>
+				<span>
+					<span class="label">Population</span>
+					<!--<span class="data">{{ obj.population.population }}</span>-->
+				</span>
+
+				<span>
+					<span class="label">Uploaded by</span>
+					<span class="data">obj.user</span>
+				</span>
+
+				<span>
+					<span class="label">Recorded</span>
+					<span class="data">{{ obj.date }}</span>
+				</span>
+
+				<span>
+					<span class="label">Equipment</span>
+					<span class="data">{{ obj.equipment }}</span>
+				</span>
+			</div>
+
+			<div class='waveform' data-url="{{ obj.file.url }}">
+				<div class="waveWrapper">
+					<div class="progress-background">
+						<progress id="song-played-progress" max="100" class="amplitude-song-played-progress" amplitude-song-index="{{ forloop.counter0 }}"></progress>
+					</div>
+					<div class="wave-footer">
+						<div class="footer-dorsal">
+							<div class="wavecontrols">
+								<div class="amplitude-play-pause button" amplitude-song-index="{{ forloop.counter0 }}"></div>
+							</div>
+						</div>
+						<div class="footer-progress">
+							<progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0" amplitude-song-index="{{ forloop.counter0 }}"></progress>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end waveform -->
+			
+		</div>
+		{% endfor %}
+
+		<div class="pagination">
+			<span class="step-links">
+				{% if results.has_previous %}
+					<a href="?page=1">&laquo; first</a>
+					<a href="?page={{ results.previous_page_number }}">previous</a>
+				{% endif %}
+
+				<span class="current">
+					Page {{ results.number }} of {{ results.paginator.num_pages }}.
+				</span>
+
+				{% if results.has_next %}
+					<a href="?page={{ results.next_page_number }}">next</a>
+					<a href="?page={{ results.paginator.num_pages }}">last &raquo;</a>
+				{% endif %}
+			</span>
+		</div>
+
+<script type="text/javascript">
+	
+	Amplitude.init({
+		"songs": [
+		{% for obj in filter.qs %}{"url": "{{obj.file.url}}"},{% endfor %}
+		],
+	});
+
+
+	var playBars = document.getElementsByClassName('amplitude-song-played-progress');
+	for(i=0;i<playBars.length;i++) {	
+		playBars[i].addEventListener('click', function( e ){
+		    var offset = this.getBoundingClientRect();
+		    var x = e.pageX - offset.left;
+
+		    Amplitude.setSongPlayedPercentage( ( parseFloat( x ) / parseFloat( this.offsetWidth) ) * 100 );
+		});
+	}
+
+</script>
+
+{% endblock %}

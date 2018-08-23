@@ -1,28 +1,38 @@
-$wavebackground: slategray
+//==== Parent Container ====/
+.record
+	margin-top: 2rem
 
-$progress-bar-color: rgba(180,0,0,.5)
-$progress-background-color: rgba(100,0,0,.5)
+//==== Progress Elements Search Results Page ====/
 progress.amplitude-song-played-progress
 	/* reset */
 	-webkit-appearance: none
 	-moz-appearance: none
 	appearance: none
 	border: none
-	/* style */
+	
 	width: 100%
-	height: 85px
+	height: 68px
 	border: none
-	background-color: $progress-background-color
-	color: $progress-bar-color  //IE
-	&::-webkit-progress-bar
-		background-color: $progress-background-color
-	&::-webkit-progress-value
-		background-color: $progress-bar-color
-	&::-moz-progress-bar // bar
-		background-color: $progress-bar-color
+	background-color: rgba(0,0,0,0)
+	color: rgba(35, 74, 112, 1) //IE Progress Bar Progress
 
-$buffer-bar-color: rgba(0,0,255,1)
-$buffer-background-color: rgba(0,0,100,1)
+	/* Progress Bar Progress */
+	&::-webkit-progress-value
+		background-color: rgba(0,0,0,.65)
+		border-right: 1px solid $progress-bar-header
+	&::-moz-progress-bar // bar
+		background-color: rgba(0,0,0,.65)
+		border-right: 1px solid $progress-bar-header
+
+	/* Progress Bar Background */
+	&::-webkit-progress-bar
+		background: rgba(0,0,0,0)
+
+.progress-background
+	background-color: #090e31
+
+$amplitude-buffer: $audio-buffer
+$amplitude-buffer-bg: $audio-buffer-bar
 progress.amplitude-buffered-progress
 	/* reset */
 	-webkit-appearance: none
@@ -31,23 +41,103 @@ progress.amplitude-buffered-progress
 	border: none
 	/* style */
 	width: 100%
-	height: 15px
+	height: 5px
 	border: none
-	background-color: $buffer-background-color
-	color: $buffer-bar-color  //IE
+	background-color: $amplitude-buffer-bg
+	color: $amplitude-buffer  //IE
 	&::-webkit-progress-bar
-		background-color: $buffer-background-color
+		background-color: $amplitude-buffer-bg
 	&::-webkit-progress-value
-		background-color: $buffer-bar-color
+		background-color: $amplitude-buffer
 	&::-moz-progress-bar // bar
-		background-color: $buffer-bar-color
+		background-color: $amplitude-buffer
 
+//==== Controls and Dials ====/
+.wave-footer
+	margin-top: -2.5rem
+
+.footer-dorsal
+	display: flex
+	justify-content: flex-start
+	align-items: flex-end
+	.amplitude-play-pause 
+		border-radius: 8px 8px 0 0
+		margin-left: 40px
+		padding: .36rem 0.7rem .36rem 1rem
+		&.amplitude-paused::before
+			background: url(../img/play.png) no-repeat 100% 50%
+			content: "play"
+			background-size: 17px
+			padding-right: 1.4rem
+		&.amplitude-playing::before
+			background: url('../img/pause.png') no-repeat 100% 50%
+			content: 'pause'
+			background-size: 17px
+			padding-right: 1.4rem
+
+$local-left-padding: 2rem
+.wavelinks
+	margin-bottom: -18.8px
+	padding-left: $local-left-padding
+	a
+		margin-right: 0.6rem
+		color: $secondary-action
+		text-transform: uppercase
+		font-family: $secondary
+		text-decoration: none
+	a:hover, a:visited:hover
+		color: $secondary-action-hover
+	a:visited
+		color: $secondary-action-visited
+
+.wavemeta
+	display: flex
+	align-items: flex-end
+	padding-left: $local-left-padding
+	padding-bottom: .8rem
+	> *
+		margin-right: 20px
+	.label
+		display: block
+		color: $text-off
+		font-size: 16px
+	.data
+		color: $text
+		font-size: 19px
+	.whale-species
+		font-size: 22px
+		.scientific-name
+			color: $text-off
+			font-size: 22px
+
+.footer-progress
+	display: flex
+
+
+//===== Home Page Hero Overrides =====/
 .intro .heroSong
-	background-color: $wavebackground
-	.coastLine
-		display: flex
-		justify-content: flex-end
-		align-items: flex-end
-		> *
-			text-align: left
-			padding: 20px 0 20px 20px
+	background-color: $bg-inset
+
+.heroSong
+	progress.amplitude-song-played-progress
+		height: 379px
+
+	.progress-background
+		background: $bg-inset url('../img/fouxwaves.png') repeat-x
+		background-size: 1094px 80%
+		background-position-x: -259px
+		background-position-y: 29px
+
+.heroSong .wavemeta
+	margin: 0 0 10px 30px
+	> *
+		margin-right: 10px				
+	.label
+		font-family: $secondary
+		font-size: 14px
+		margin-right: 4px
+	.text
+		font-size: 16px
+	.text-sub
+		color: $text-off
+		font-size: 16px
