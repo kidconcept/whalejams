@@ -235,23 +235,6 @@ progress.amplitude-buffered-progress {
   right: 0;
   top: 0; }
 
-.mapContainer {
-  width: 100%;
-  height: 0;
-  overflow: hidden; }
-  .mapContainer .fixedMapContainer {
-    height: 500px; }
-  .mapContainer .mapSpacer {
-    margin-bottom: -500px; }
-
-.open.mapContainer {
-  height: 500px; }
-  .open.mapContainer .mapSpacer {
-    margin-bottom: 0; }
-
-.mapToggle {
-  cursor: pointer; }
-
 .bannerText {
   text-align: center;
   margin-bottom: 2rem; }
@@ -348,54 +331,33 @@ form.search-filter .form-elements {
   .pagination a:visited {
     color: #5959d3; }
 
-#fileUpload > div {
-  height: 69px; }
-#fileUpload div.buttonWrapper button {
-  width: 100px; }
-#fileUpload input {
-  width: 100%; }
-
-._react_fileupload_progress_content {
-  height: 69px;
-  margin-top: -69px;
-  margin-left: 120px; }
-
-.selectSpecies {
-  display: flex;
-  justify-content: space-between; }
-  .selectSpecies label {
-    flex-grow: 1;
+/* File upload field and displays */
+.jammin .s3direct {
+  float: none; }
+  .jammin .s3direct .progress {
+    background: #333;
+    width: 200px; }
+  .jammin .s3direct .file-remove {
+    margin-top: 10px;
+    text-transform: uppercase; }
+  .jammin .s3direct .progress,
+  .jammin .s3direct .file-link,
+  .jammin .s3direct .file-input,
+  .jammin .s3direct .file-remove {
     display: block;
-    height: 69px; }
-
-.dateCommEquip {
-  display: flex;
-  justify-content: space-between; }
-  .dateCommEquip label {
-    display: block;
-    height: 69px; }
-    .dateCommEquip label input {
-      display: block; }
-  .dateCommEquip label.recordingDate,
-  .dateCommEquip label.communicationType {
-    width: 25%; }
-    .dateCommEquip label.recordingDate em,
-    .dateCommEquip label.communicationType em {
-      display: block; }
-  .dateCommEquip label.equipmentUsed {
-    width: 50%; }
-    .dateCommEquip label.equipmentUsed input {
-      width: 100%; }
-
-label.description {
-  width: 100%; }
-  label.description textarea {
-    display: block;
-    width: 100%; }
-
-.simpleMap {
-  min-height: 69px; }
-  .simpleMap input {
+    float: none;
+    clear: none; }
+  .jammin .s3direct.form-active .file-input {
     display: block; }
+  .jammin .s3direct.form-active .uploading, .jammin .s3direct.form-active .upload-complete {
+    display: none; }
+  .jammin .s3direct.progress-active .uploading {
+    display: block; }
+  .jammin .s3direct.progress-active .upload-complete {
+    display: none; }
+  .jammin .s3direct.link-active .upload-complete {
+    display: block; }
+  .jammin .s3direct.link-active .uploading {
+    display: none; }
 
 /*# sourceMappingURL=app.css.map */

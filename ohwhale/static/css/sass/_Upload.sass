@@ -1,52 +1,43 @@
-$rowHeight: 69px
-$buttonWidth: 100px
+/* File upload field and displays */
+.jammin .s3direct
+	// Overrides for the s3Direct widget styles
+	float: none
 
-#fileUpload
-	> div
-		height: $rowHeight
-	div.buttonWrapper button
-		width: $buttonWidth
-	input
-		width: 100%
+	.progress
+		background: #333
+		width: 200px
 
-._react_fileupload_progress_content
-	height: $rowHeight
-	margin-top: -#{$rowHeight}
-	margin-left: $buttonWidth + 20px
+	.file-remove
+		margin-top: 10px
+		text-transform: uppercase
 
-.selectSpecies
-	display: flex
-	justify-content: space-between
-	label
-		flex-grow: 1
+	.progress,
+	.file-link,
+	.file-input,
+	.file-remove
 		display: block
-		height: $rowHeight
+		float: none
+		clear: none
 
-.dateCommEquip
-	display: flex
-	justify-content: space-between
-	label
+	// Waiting for Upload
+	&.form-active .file-input
 		display: block
-		height: $rowHeight
-		input
-			display: block
-	label.recordingDate,
-	label.communicationType
-		width: 25%
-		em
-			display: block
-	label.equipmentUsed
-		width: 50%
-		input
-			width: 100%
 
-label.description
-	width: 100%
-	textarea
-		display: block
-		width: 100%
+	&.form-active .uploading,
+	&.form-active .upload-complete
+		display: none
 
-.simpleMap
-	min-height: $rowHeight
-	input
+	// Activly Uploading
+	&.progress-active .uploading
 		display: block
+
+	&.progress-active .upload-complete
+		display: none
+
+	// Upload Complete
+	&.link-active .upload-complete
+		display: block
+
+	&.link-active .uploading
+		display: none
+

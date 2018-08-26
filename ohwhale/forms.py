@@ -3,9 +3,9 @@ from .models import Recording
 
 
 from s3direct.widgets import S3DirectWidget
-class NewRecordForm(forms.Form):
+class NewRecordForm(forms.ModelForm):
 	file = forms.URLField(widget=S3DirectWidget(dest='whalejams'))
 
-	#class Meta:
-	#	model = Recording
-	#	fields = ('file', 'species', 'population', 'subPopulations', 'lat', 'lon', 'date', 'time', 'equipment', 'description', 'commType')
+	class Meta:
+		model = Recording
+		fields = ('file', 'species', 'population', 'subPopulations', 'lat', 'lon', 'date', 'time', 'equipment', 'description', 'commType')

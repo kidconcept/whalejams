@@ -7,9 +7,9 @@
     	{% csrf_token %}
     	 {{ newRecordForm.non_field_errors }}
 
-		<div class="fieldWrapper">
+		<div class="jammin">
 			{{ newRecordForm.file.errors }}
-			<label for="{{ newRecordForm.file.id_for_label }}">File</label>
+			<label for="{{ newRecordForm.file.id_for_label }}">Audio File</label>
 			{{ newRecordForm.file }}
 		</div>
 
