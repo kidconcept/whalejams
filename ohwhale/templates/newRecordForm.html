@@ -3,68 +3,85 @@
 {% block content %}
 {{ newRecordForm.media }}
 
-    <form action="" method="post" enctype="multipart/form-data">
+<div class="coastLine">
+    <form action="" method="post" enctype="multipart/form-data" class="jammin-upload">
     	{% csrf_token %}
     	 {{ newRecordForm.non_field_errors }}
 
-		<div class="jammin">
+		<div class="field-wrapper file">
 			{{ newRecordForm.file.errors }}
-			<label for="{{ newRecordForm.file.id_for_label }}">Audio File</label>
+			<label for="{{ newRecordForm.file.id_for_label }}">Upload Audio File</label>
 			{{ newRecordForm.file }}
 		</div>
 
-		<div class="fieldWrapper">
+		<div class="field-wrapper species">
 			{{ newRecordForm.species.errors }}
 			<label for="{{ newRecordForm.species.id_for_label }}">Species</label>
-			{{ newRecordForm.species }}
+			<div class="select-style">{{ newRecordForm.species }}</div>
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="field-wrapper population">
 			{{ newRecordForm.population.errors }}
 			<label for="{{ newRecordForm.population.id_for_label }}">Population</label>
-			{{ newRecordForm.population }}
+			<div class="select-style">{{ newRecordForm.population }}</div>
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="field-wrapper subpopulation">
 			{{ newRecordForm.subPopulations.errors }}
 			<label for="{{ newRecordForm.subPopulations.id_for_label }}">Subpopopulation</label>
-			{{ newRecordForm.subPopulations }}
+			<div class="select-style">{{ newRecordForm.subPopulations }}</div>
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="field-wrapper">
 			{{ newRecordForm.lat.errors }}
 			<label for="{{ newRecordForm.lat.id_for_label }}">Latitude</label>
 			{{ newRecordForm.lat }}
-		</div>
-		<div class="fieldWrapper">
+		</div class="field-wrapper">
+
+		<div class="field-wrapper latlon">
 			{{ newRecordForm.lon.errors }}
 			<label for="{{ newRecordForm.lon.id_for_label }}">Longitude</label>
 			{{ newRecordForm.lon }}
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="field-wrapper commtype">
 			{{ newRecordForm.commType.errors }}
 			<label for="{{ newRecordForm.commType.id_for_label }}">Communication Type</label>
-			{{ newRecordForm.commType }}
+			<div class="select-style">{{ newRecordForm.commType }}</div>
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="form-filter datetime calendar field-wrapper">
 			{{ newRecordForm.date.errors }}
-			<label for="{{ newRecordForm.date.id_for_label }}">Date Recorded<span>DD/MM/YYYY</span></label>
+			<label for="{{ newRecordForm.date.id_for_label }}">
+				<span class="text">Date Recorded</span>
+				<span class="example">DD/MM/YYYY</span>
+			</label>
 			{{ newRecordForm.date }}
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="form-filter datetime field-wrapper">
 			{{ newRecordForm.time.errors }}
-			<label for="{{ newRecordForm.time.id_for_label }}">Time Recording Began<span>HH:MM</span></label>
+			<label for="{{ newRecordForm.time.id_for_label }}">
+				<span class="text">Time Recording Began</span>
+				<span class="example">HH:MM</span>
+			</label>
 			{{ newRecordForm.time }}
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="field-wrapper equipment">
 			{{ newRecordForm.equipment.errors }}
 			<label for="{{ newRecordForm.equipment.id_for_label }}">Equipment</label>
 			{{ newRecordForm.equipment }}
 		</div>
-		<div class="fieldWrapper">
+
+		<div class="field-wrapper description">
 			{{ newRecordForm.description.errors }}
 			<label for="{{ newRecordForm.description.id_for_label }}">Description</label>
 			{{ newRecordForm.description }}
 		</div>
-
-        <button type="submit" class="save btn btn-default">Save</button>
+		<div class="submit-wrapper">
+	        <input type="submit" class="" Value="Save Recording"/>
+	    </div>
     </form>
-
+</div>
 {% endblock %}

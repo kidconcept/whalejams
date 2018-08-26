@@ -85,6 +85,91 @@ p {
   font-size: 18px;
   margin: 0 0 2rem 0; }
 
+form input, form textarea {
+  background: none;
+  height: 44px;
+  border: 1px solid #5959d3;
+  border-radius: 13px;
+  font-family: open_sanslight;
+  font-size: 18px;
+  color: #FFF; }
+form label {
+  color: #999999;
+  display: block; }
+form .select-style {
+  background: none;
+  height: 44px;
+  border: 1px solid #5959d3;
+  border-radius: 13px;
+  height: 46px;
+  background: url(../img/down-arrow.png) no-repeat 93% center;
+  background-size: 22px; }
+  form .select-style select {
+    font-family: open_sanslight;
+    font-size: 18px;
+    color: #FFF;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+    -moz-appearance: none; }
+    form .select-style select:focus {
+      outline: none; }
+    form .select-style select option {
+      color: black; }
+form .datetime input {
+  font-family: open_sanslight;
+  font-size: 18px;
+  color: #FFF;
+  font-weight: normal;
+  padding-left: 10px; }
+form .datetime label .example {
+  font-size: 14px;
+  display: block; }
+form .datetime.calendar input {
+  background: url(../img/calendar.png) no-repeat 93% center;
+  background-size: 21px; }
+form input[type="submit"] {
+  font-family: open_sanslight;
+  font-size: 18px;
+  color: #FFF;
+  border-radius: 13px;
+  background: #5959d3;
+  border: none;
+  padding: 14px 24px;
+  height: auto;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block; }
+  form input[type="submit"]:hover {
+    background-color: #7272dd; }
+form input[type="file"] {
+  border: none;
+  border-radius: 0;
+  cursor: pointer; }
+form .file-wrapper .file-art {
+  border-radius: 13px;
+  background: #5959d3;
+  border: none;
+  padding: 14px 24px;
+  height: auto;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: inline-block;
+  font-family: open_sanslight;
+  font-size: 18px;
+  color: #FFF; }
+  form .file-wrapper .file-art:hover {
+    background-color: #7272dd; }
+
 .record {
   margin-top: 2rem; }
 
@@ -243,84 +328,30 @@ form.search-filter .form-elements {
   display: flex;
   justify-content: center;
   align-items: flex-end; }
-  form.search-filter .form-elements label {
-    color: #999999;
-    display: block; }
-  form.search-filter .form-elements .select-style {
-    width: 241px;
-    height: 46px;
-    border: 1px solid #5959d3;
-    border-radius: 13px;
-    background: url(../img/down-arrow.png) no-repeat 93% center;
-    margin-right: 1.5rem;
-    background-size: 22px; }
-    form.search-filter .form-elements .select-style select {
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      font-family: open_sanslight;
-      font-size: 18px;
-      color: #FFF;
-      border: none;
-      box-shadow: none;
-      background: transparent;
-      background-image: none;
-      -webkit-appearance: none;
-      -moz-appearance: none; }
-      form.search-filter .form-elements .select-style select:focus {
-        outline: none; }
-      form.search-filter .form-elements .select-style select option {
-        color: black; }
-  form.search-filter .form-elements .daterange {
-    margin-right: 2rem; }
-    form.search-filter .form-elements .daterange .inputs {
-      background: url(../img/dash.png) no-repeat center center;
-      display: flex;
-      width: 341px;
-      justify-content: space-between;
-      color: black; }
-    form.search-filter .form-elements .daterange .inputs input {
-      height: 44px;
-      border: 1px solid #5959d3;
-      border-radius: 13px;
-      padding-left: 10px;
-      font-family: open_sanslight;
-      font-size: 18px;
-      color: #FFF;
-      font-weight: normal;
-      background: url(../img/calendar.png) no-repeat 93% center;
-      background-size: 21px; }
-    form.search-filter .form-elements .daterange label .text {
-      font-size: 16px;
-      display: block; }
-    form.search-filter .form-elements .daterange label .example {
-      font-size: 14px;
-      display: block; }
-    form.search-filter .form-elements .daterange .labels, form.search-filter .form-elements .daterange .inputs {
-      display: flex;
-      justify-content: space-between; }
-      form.search-filter .form-elements .daterange .labels > *, form.search-filter .form-elements .daterange .inputs > * {
-        width: 147px;
-        box-sizing: border-box; }
-  form.search-filter .form-elements input[type="submit"] {
-    border: none;
-    margin: 1px;
-    text-decoration: none;
-    border-radius: 13px;
-    background: #5959d3 url(../img/search.png) no-repeat 88% center;
-    color: #FFF;
-    font-family: open_sanslight;
-    font-size: 18px;
-    height: 47px;
-    text-align: left;
-    width: 104px;
-    padding-left: 14px;
-    background-size: 18px;
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none; }
-    form.search-filter .form-elements input[type="submit"]:hover {
-      background-color: #7272dd; }
+form.search-filter .select-style {
+  width: 241px;
+  margin-right: 1.5rem; }
+form.search-filter .form-filter.datetime.calendar {
+  margin-right: 2rem; }
+  form.search-filter .form-filter.datetime.calendar .inputs {
+    background: url(../img/dash.png) no-repeat center center;
+    display: flex;
+    width: 341px;
+    justify-content: space-between;
+    color: black; }
+  form.search-filter .form-filter.datetime.calendar .labels, form.search-filter .form-filter.datetime.calendar .inputs {
+    display: flex;
+    justify-content: space-between; }
+    form.search-filter .form-filter.datetime.calendar .labels > *, form.search-filter .form-filter.datetime.calendar .inputs > * {
+      width: 147px;
+      box-sizing: border-box; }
+form.search-filter input.search-input {
+  background: #5959d3 url(../img/search.png) no-repeat 88% center;
+  padding-left: 14px;
+  background-size: 18px;
+  height: 47px;
+  text-align: left;
+  width: 104px; }
 
 .total-results,
 .pagination {
@@ -332,32 +363,72 @@ form.search-filter .form-elements {
     color: #5959d3; }
 
 /* File upload field and displays */
-.jammin .s3direct {
+.jammin-upload .s3direct {
   float: none; }
-  .jammin .s3direct .progress {
+  .jammin-upload .s3direct .progress {
     background: #333;
-    width: 200px; }
-  .jammin .s3direct .file-remove {
-    margin-top: 10px;
+    width: 100%; }
+  .jammin-upload .s3direct .file-remove {
+    margin-top: 0;
     text-transform: uppercase; }
-  .jammin .s3direct .progress,
-  .jammin .s3direct .file-link,
-  .jammin .s3direct .file-input,
-  .jammin .s3direct .file-remove {
+  .jammin-upload .s3direct .progress,
+  .jammin-upload .s3direct .file-link,
+  .jammin-upload .s3direct .file-input,
+  .jammin-upload .s3direct .file-remove {
     display: block;
     float: none;
     clear: none; }
-  .jammin .s3direct.form-active .file-input {
+  .jammin-upload .s3direct.form-active .file-input {
     display: block; }
-  .jammin .s3direct.form-active .uploading, .jammin .s3direct.form-active .upload-complete {
+  .jammin-upload .s3direct.form-active .uploading, .jammin-upload .s3direct.form-active .upload-complete {
     display: none; }
-  .jammin .s3direct.progress-active .uploading {
-    display: block; }
-  .jammin .s3direct.progress-active .upload-complete {
+  .jammin-upload .s3direct.progress-active .uploading {
+    display: flex; }
+    .jammin-upload .s3direct.progress-active .uploading span {
+      margin-right: 1rem; }
+  .jammin-upload .s3direct.progress-active .upload-complete {
     display: none; }
-  .jammin .s3direct.link-active .upload-complete {
-    display: block; }
-  .jammin .s3direct.link-active .uploading {
+  .jammin-upload .s3direct.link-active .upload-complete {
+    display: flex; }
+    .jammin-upload .s3direct.link-active .upload-complete span, .jammin-upload .s3direct.link-active .upload-complete a {
+      margin-right: 1rem; }
+  .jammin-upload .s3direct.link-active .uploading {
     display: none; }
+
+.jammin-upload {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end; }
+  .jammin-upload .field-wrapper, .jammin-upload .submit-wrapper {
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding-right: 2rem; }
+    .jammin-upload .field-wrapper input, .jammin-upload .submit-wrapper input {
+      padding-right: none; }
+  .jammin-upload .submit-wrapper {
+    text-align: right;
+    flex-basis: 100%; }
+  .jammin-upload .field-wrapper.file {
+    flex-basis: 100%; }
+  .jammin-upload .field-wrapper.species,
+  .jammin-upload .field-wrapper.population,
+  .jammin-upload .field-wrapper.subpopulation {
+    flex-basis: 33.333%; }
+  .jammin-upload .field-wrapper.latlon {
+    page-break-after: always; }
+  .jammin-upload .field-wrapper.commtype,
+  .jammin-upload .field-wrapper.datetime {
+    flex-basis: 33.333%; }
+  .jammin-upload .field-wrapper.equipment,
+  .jammin-upload .field-wrapper.description {
+    flex-basis: 100%; }
+  .jammin-upload .datetime input,
+  .jammin-upload .equipment input {
+    width: 100%;
+    box-sizing: border-box; }
+  .jammin-upload .description textarea {
+    width: 100%;
+    height: 10rem;
+    box-sizing: border-box; }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,81 @@
+$filter-font-size: 18px
+
+@mixin input-styles
+	background: none
+	height: 44px
+	border: 1px solid $secondary-action
+	border-radius: 13px
+
+@mixin input-text-styles
+	font-family: $primary
+	font-size: $filter-font-size
+	color: $text
+
+@mixin button-styles
+	border-radius: 13px
+	background: $secondary-action 
+	border: none
+	padding: 14px 24px
+	height: auto
+	text-decoration: none
+	cursor: pointer
+	-webkit-appearance: none
+	-moz-appearance: none
+	display: inline-block
+	&:hover
+		background-color: $secondary-action-hover
+
+form
+	input, textarea
+		@include input-styles
+		@include input-text-styles
+
+	label
+		color: $text-off
+		display: block
+
+	.select-style
+		@include input-styles
+		height: 46px
+		background: url(../img/down-arrow.png) no-repeat 93% center
+		background-size: 22px
+		select
+			@include input-text-styles
+			padding: 0
+			width: 100%
+			height: 100%
+			border: none
+			box-shadow: none
+			background: transparent
+			background-image: none
+			-webkit-appearance: none
+			-moz-appearance: none
+			&:focus
+				outline: none
+			option
+				color: black
+
+	.datetime
+		input
+			@include input-text-styles
+			font-weight: normal
+			padding-left: 10px
+		label .example
+			font-size: 14px
+			display: block
+	.datetime.calendar input
+		background: url(../img/calendar.png) no-repeat 93% center
+		background-size: 21px
+
+	input[type="submit"]
+		@include input-text-styles
+		@include button-styles
+
+	input[type="file"]
+		border: none
+		border-radius: 0
+		cursor: pointer
+
+	.file-wrapper .file-art
+		@include button-styles
+		@include input-text-styles

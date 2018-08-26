@@ -13,7 +13,7 @@
 					<label for="population__population">{{ filter.form.population__population.label }}</label>
 					<div class="select-style">{{ filter.form.population__population }}</div>		
 				</div>
-				<div class="form-filter daterange">
+				<div class="form-filter datetime calendar">
 					<div class="labels">					
 						<label for="date_min">
 							<span class="text">From Date</span>
@@ -26,7 +26,7 @@
 					</div>
 					<div class="inputs">{{ filter.form.date }}</div>
 				</div>
-				<input type="submit" value="Search" />
+				<input type="submit" class="search-input" value="Search" />
 			</div>
 			<div class="errors">
 				{{ filter.form.errors }}
