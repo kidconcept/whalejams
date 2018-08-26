@@ -14,16 +14,27 @@ from django.views.generic import FormView
 
 # CLEAN THESE IMPORTS YA SLOBP
 
-#Da details Page
+#Da details View
 class RecordingDetailView(generic.DetailView):
 	model = Recording
 
-#Da Upload Page
-#class RecordingCreate(CreateView):
-#	model = Recording
-#	form_class = S3DirectUploadForm
-	#fields = ['file', 'species', 'population', 'lat', 'lon', 'date', 'equipment', 'description', 'commType']	
-	#initial={'equipment':'H1A Hydrophone'}
+#Da Upload View
+def upload(request):
+
+	if request.method == 'POST':
+		nRF = NewRecordForm(request.POST)
+		if nRF.is_valid():
+			new_record = nRF.save()
+			return redirect('song-detail',pk=new_record.id)
+
+	else:
+		nRF = NewRecordForm()
+
+	return render(
+		request,
+		'newRecordForm.html',
+		context={'newRecordForm':nRF}
+	)
 
 #Da Home page
 def index(request):
@@ -55,21 +66,3 @@ def song_list(request):
 		context={'results':results,'filter':f}
 	)
 
-#New Upload Page Beta
-def upload(request):
-
-
-	if request.method == 'POST':
-		nRF = NewRecordForm(request.POST)
-		if nRF.is_valid():
-			new_record = nRF.save()
-			return redirect('song-detail',pk=new_record.id)
-
-	else:
-		nRF = NewRecordForm()
-
-	return render(
-		request,
-		'newRecordForm.html',
-		context={'newRecordForm':nRF}
-	)

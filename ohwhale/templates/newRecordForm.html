@@ -1,14 +1,70 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>s3directo</title>
-    {{ newRecordForm.media }}
-</head>
-<body>
+{% extends 'base_generic.html' %}
+
+{% block content %}
+{{ newRecordForm.media }}
+
     <form action="" method="post" enctype="multipart/form-data">
     	{% csrf_token %}
-        {{ newRecordForm.as_p }}
+    	 {{ newRecordForm.non_field_errors }}
+
+		<div class="fieldWrapper">
+			{{ newRecordForm.file.errors }}
+			<label for="{{ newRecordForm.file.id_for_label }}">File</label>
+			{{ newRecordForm.file }}
+		</div>
+
+		<div class="fieldWrapper">
+			{{ newRecordForm.species.errors }}
+			<label for="{{ newRecordForm.species.id_for_label }}">Species</label>
+			{{ newRecordForm.species }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.population.errors }}
+			<label for="{{ newRecordForm.population.id_for_label }}">Population</label>
+			{{ newRecordForm.population }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.subPopulations.errors }}
+			<label for="{{ newRecordForm.subPopulations.id_for_label }}">Subpopopulation</label>
+			{{ newRecordForm.subPopulations }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.lat.errors }}
+			<label for="{{ newRecordForm.lat.id_for_label }}">Latitude</label>
+			{{ newRecordForm.lat }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.lon.errors }}
+			<label for="{{ newRecordForm.lon.id_for_label }}">Longitude</label>
+			{{ newRecordForm.lon }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.commType.errors }}
+			<label for="{{ newRecordForm.commType.id_for_label }}">Communication Type</label>
+			{{ newRecordForm.commType }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.date.errors }}
+			<label for="{{ newRecordForm.date.id_for_label }}">Date Recorded<span>DD/MM/YYYY</span></label>
+			{{ newRecordForm.date }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.time.errors }}
+			<label for="{{ newRecordForm.time.id_for_label }}">Time Recording Began<span>HH:MM</span></label>
+			{{ newRecordForm.time }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.equipment.errors }}
+			<label for="{{ newRecordForm.equipment.id_for_label }}">Equipment</label>
+			{{ newRecordForm.equipment }}
+		</div>
+		<div class="fieldWrapper">
+			{{ newRecordForm.description.errors }}
+			<label for="{{ newRecordForm.description.id_for_label }}">Description</label>
+			{{ newRecordForm.description }}
+		</div>
+
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
-</body>
-</html>
+
+{% endblock %}
